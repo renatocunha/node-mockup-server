@@ -12,11 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json())
 
 app.post('/v1/artifact', function(req, res){
-	const file = req.body;
-	console.log("file:");
-	console.log(file);
+	const file = JSON.stringify(req.body);
+	const path = './artifacts/' + req.body.uuid + '.json';
 	try{
-		artifacts.push(file);
+		fileSystem.writeFileSync(path,file);
 		res.status(201).send({status: "SUCCESS"});
 	}catch(err){
 		console.error(err);
@@ -26,30 +25,23 @@ app.post('/v1/artifact', function(req, res){
 
 
 app.get('/v1/artifacts', function(req, res){
+	//todo list all artifacts and return 
 	console.log('All Artifacts');
-	res.json(artifacts);
+	
 });
 
-app.get('/v1/artifact:uuid', function(req, res){
-	console.log('searching for artifact');
-	const uuid = req.params.uuid;
-	for (let artifact of artifacts){
-		if (artifact.uuid === uuid ){
-			console.log('found');
-			res.status(200).json(artifact);
-		}
-	}
-	res.status(404).send('Artifact not found');
-});
 
 app.get('/v1/artifact/:uuid', function(req, res){
-	console.log('Local files');
-	let uuid = './artifacts/'+ req.params.uuid + '.json';
-	console.log(uuid);
-	fileSystem.readFile(uuid,function(err, json){
+	let f = './artifacts/'+ req.params.uuid + '.json';
+	fileSystem.readFile(f,'utf8',function(err, json){
+		if (err){
+			res.status(500).json(JSON.parse(err));
+		}
+
 		let obj = JSON.parse(json);
 		res.status(200).json(obj);
 	});
 });
 
 app.listen(port, () => console.log(`Listen at port: ${port}!`));
+
