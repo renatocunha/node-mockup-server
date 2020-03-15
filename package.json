@@ -1,18 +1,25 @@
 {
-  "name": "node-mockup-server",
+  "name": "restful-mockup-server-local",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tool for mocking a Restful server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renatocunha/node-restful-mockup-server.git"
   },
-  "devDependencies": {}
+  "author": "renatocunha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renatocunha/node-restful-mockup-server/issues"
+  },
+  "homepage": "https://github.com/renatocunha/node-restful-mockup-server#readme",
+  "dependencies": {
+    "@types/express": "^4.17.3",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "typescript": "^3.8.3"
+  }
 }

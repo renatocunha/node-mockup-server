@@ -1,6 +1,0 @@
-{
-	"base64": "cHVibGljIGNsYXNzIERhdGFTdHJ1Y3R1cmV7CglwdWJsaWMgc3RhdGljIHZvaWQgbWFpbihTdHJpbmdbXSBhcmdzKXsKCQlTeXN0ZW0ub3V0LnByaW50bG4oIkRhdGEtIFN0cnVjdHVyZXMiKTsKCQlTeXN0ZW0ub3V0LnByaW50KCJvYmkgd2FuIHNheXM6Iik7CgkJaGVsbG90aGVyZSgpOwoJfQoKCXB1YmxpYyBzdGF0aWMgdm9pZCBoZWxsb3RoZXJlKCl7CgkJU3lzdGVtLm91dC5wcmludGxuKCJoZWxsbyB0aGVyZSIpOwoKCX0KfQ==",
-	"uuid": "125bb27c-4089-8a7b-6670285",
-	"fileName": "DataStructure.java",
-	"precompile": false
-}
