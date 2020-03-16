@@ -1,6 +1,14 @@
 # node-mockup-server
 Simple Application to mockingup RESTful requests.
 
+Run:
+
+```bash
+~$ docker pull renatocunha/node-mockup-server:latest
+~$ docker run --rm -ti -p 9000:9000 renatocunha/node-mockup-server:latest
+
+```
+
 EndPoints so far:
 
 ```bash
