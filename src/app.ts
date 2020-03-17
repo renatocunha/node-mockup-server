@@ -47,14 +47,20 @@ class App {
 		}));
 
 		router.post('/v1/artifact/', function(req, res){
-			console.log('posting file');
+			let timeStamp = `[${ Date() }]`
+			console.log('POST: ', timeStamp);
 			try{
+				console.log('uudi: ', req.body.uudi);
 				if (req.body.uuid === ''){
+					console.log('invalid uuid');
 					res.status(statusError).json(errBody);
 				}else{
+
 					const jsonBody: string = JSON.stringify(req.body);
 					const jsonPath: string = `${rootFolder}/${req.body.uuid}.json`;
+					console.log('writing file: ',jsonPath )
 					fs.writeFileSync(jsonPath, jsonBody);
+					console.log('file created successfuly');
 					res.status(statusCreated).send(scsBody);
 				}
 			}catch(err){
@@ -77,7 +83,7 @@ class App {
 
 	public console_start_up(port: number){
 		console.log('// Starting Node Mockup Restful Server // ')
-		console.log('// App version 0.0.01                 //  ')
+		console.log('// App version 0.0.02                 //  ')
 	}
 	
 }

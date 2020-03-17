@@ -1,10 +1,11 @@
 {
-  "name": "restful-mockup-server-local",
+  "name": "restful-mockup-server",
   "version": "1.0.0",
   "description": "Tool for mocking a Restful server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"start": "node dist/index.js",
+	"build": "tsc -p ."
   },
   "repository": {
     "type": "git",

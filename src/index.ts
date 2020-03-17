@@ -11,6 +11,6 @@ app.listen(port, (err: string) => {
 		return console.error(err);
 	}
 
-	return console.log(`// listening on port: ${port}       //`);
+	return console.log(`// listening on port: ${port}           //`);
 });
 
