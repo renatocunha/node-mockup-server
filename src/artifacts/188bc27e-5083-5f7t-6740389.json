@@ -1,0 +1,30 @@
+{
+	"body": [
+		{
+			"file": "renat010.prw",
+			"issues": [
+				{
+					"severity": "ERROR",
+					"line": "10",
+					"rule": "CA2004",
+					"message": "Regra: CA2004: Uso não permitido do Metadados - SX3. | Conteúdo: Assignment not allowed in data dictionary. - Linha: 10"
+				}
+			]
+		},
+		{
+			"file": "renat011.prw",
+			"issues": [
+				{
+					"severity": "ERROR",
+					"line": "10",
+					"rule": "CA2004",
+					"message": "Regra: CA2004: Uso não permitido do Metadados - SX3. | Conteúdo: Assignment not allowed in data dictionary. - Linha: 10"
+				}
+			]
+		}
+	],
+	"uuid": "188bc27e-5083-5f7t-6740389",
+	"fileName": "var1.prw",
+	"precompile": false,
+	"running": "false"
+}

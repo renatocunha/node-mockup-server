@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as asyncHandler from 'express-async-handler';
 import * as bodyParser from 'body-parser';
 
-const rootFolder: string = path.join(__dirname, 'artifacts');
+const rootFolder: string = path.join("./src", 'artifacts');
 const encode: string  = 'utf8'
 const statusOk: number = 200;
 const statusCreated: number = 201;
@@ -15,23 +15,22 @@ const scsBody: object = { status: "success"};
 
 class App {
 	public express;
+	public port: number;
 	constructor(){
 		this.express = express();
 		this.express.use(bodyParser.urlencoded({extended: false}));
 		this.express.use(bodyParser.json());
 		this.routes();
-		this.console_start_up(9000);
+		this.console_start_up();
 	}
 
 	private routes(){
 		const router = express.Router();
+		console.log("rootfolder:", rootFolder);
 		router.get('/v1/artifact/:uuid', function(req,res) {
-			
-			console.log('Geting: ', req.params.uuid);
-			
 			const file: string = `${rootFolder}/${req.params.uuid}.json`;
 			const json: string = fs.readFileSync(file, encode);
-			
+			//this.event_Log('GET', file);
 			if (json === ''){
 				res.status(statusNotFound).json(statusError);
 			}else{
@@ -41,26 +40,28 @@ class App {
 		});
 
 		router.get('/v1/artifacts/', asyncHandler(async(req, res) => {
-			console.log('getting all files');
+			this.event_Log('GET', 'All Artifacts');
 			let artifacts: Array<object> = await this.get_all_files();
 			res.status(statusOk).json(artifacts);
 		}));
 
 		router.post('/v1/artifact/', function(req, res){
-			let timeStamp = `[${ Date() }]`
-			console.log('POST: ', timeStamp);
+			
 			try{
-				console.log('uudi: ', req.body.uudi);
+				//this.eventLog('POST', req.body.uudi);
 				if (req.body.uuid === ''){
-					console.log('invalid uuid');
+					//this.eventLog('POST', "Invalid uuid");
 					res.status(statusError).json(errBody);
 				}else{
 
 					const jsonBody: string = JSON.stringify(req.body);
 					const jsonPath: string = `${rootFolder}/${req.body.uuid}.json`;
-					console.log('writing file: ',jsonPath )
+					
+					//this.eventLog('Writing file', jsonPath);
+					
 					fs.writeFileSync(jsonPath, jsonBody);
-					console.log('file created successfuly');
+					//this.eventLog('File created successfuly', jsonPath);
+					
 					res.status(statusCreated).send(scsBody);
 				}
 			}catch(err){
@@ -80,11 +81,18 @@ class App {
 		}
 		return artifacts;
 	}
-
-	public console_start_up(port: number){
-		console.log('// Starting Node Mockup Restful Server // ')
-		console.log('// App version 0.0.02                 //  ')
+	private event_Log(eventType = "event", eventId = ""){
+		let timeStamp = `[${ Date() }]`;
+		console.log(`${eventType}-> ${eventId} @ ${timeStamp}`);
 	}
+
+	public console_start_up(){
+		console.log('// Starting Node Mockup Restful Server  //')
+		console.log('// App version 0.0.03                  //')
+		
+	}
+
+	
 	
 }
 

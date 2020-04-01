@@ -4,8 +4,8 @@
   "description": "Tool for mocking a Restful server",
   "main": "index.js",
   "scripts": {
-	"start": "node dist/index.js",
-	"build": "tsc -p ."
+    "start": "node dist/index.js",
+    "build": "tsc -p ."
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/renatocunha/node-restful-mockup-server#readme",
   "dependencies": {
     "@types/express": "^4.17.3",
+    "@types/yargs": "^15.0.4",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "typescript": "^3.8.3"
